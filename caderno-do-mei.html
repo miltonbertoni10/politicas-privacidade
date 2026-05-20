@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidade — Caderno do MEI</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         max-width: 720px; margin: 40px auto; padding: 0 20px; color: #222; line-height: 1.6; }
+  h1 { font-size: 26px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin-top: 32px; color: #8B6F47; }
+  p.sub { color: #666; margin-top: 0; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 6px; }
+  a { color: #1a73e8; }
+  .destaque { background: #EFE4D2; padding: 12px 16px; border-radius: 6px;
+              border-left: 4px solid #8B6F47; margin: 16px 0; }
+  footer { color: #888; font-size: 13px; margin-top: 40px;
+           border-top: 1px solid #eee; padding-top: 16px; }
+  .back { font-size: 13px; color: #666; }
+</style>
+</head>
+<body>
+  <p class="back"><a href="index.html">← Voltar</a></p>
+  <h1>Política de Privacidade — Caderno do MEI</h1>
+  <p class="sub">Vigente a partir de 20 de maio de 2026</p>
+
+  <h2>1. Quem somos</h2>
+  <p>
+    O aplicativo <strong>Caderno do MEI</strong> é mantido por Milton Bertoni
+    (Miber Sistemas), pessoa física, no Brasil. Disponível na Google Play Store,
+    com opção de assinatura Premium.
+  </p>
+
+  <h2>2. Que dados o app coleta</h2>
+  <p>
+    O Caderno do MEI <strong>funciona 100% offline</strong>. Clientes, vendas
+    e pagamentos cadastrados ficam armazenados apenas no seu aparelho
+    (Hive + SharedPreferences). Nenhum desses dados é enviado a nossos servidores.
+  </p>
+  <p>
+    Dados coletados por terceiros via SDKs:
+  </p>
+  <ul>
+    <li>
+      <strong>Google AdMob</strong> (anúncios na versão gratuita): identificador
+      de publicidade e dados de uso conforme
+      <a href="https://policies.google.com/technologies/ads">a política do Google</a>.
+    </li>
+    <li>
+      <strong>Google Play Billing</strong>: processamento da assinatura Premium.
+    </li>
+    <li>
+      <strong>Analytics local</strong>: contador de eventos guardado <strong>apenas
+      no seu aparelho</strong>.
+    </li>
+  </ul>
+
+  <h2>3. Permissões do Android</h2>
+  <ul>
+    <li><code>INTERNET</code>: para AdMob e Google Play Billing.</li>
+    <li>
+      <strong><code>READ_CONTACTS</code> (opcional)</strong>: usada APENAS quando
+      você toca em "Importar do telefone" no cadastro de cliente. A permissão
+      não é solicitada automaticamente ao abrir o app — só ao tocar nesse botão
+      específico. Você pode usar o app inteiro sem conceder essa permissão.
+    </li>
+    <li><code>POST_NOTIFICATIONS</code>: para o lembrete semanal de exportar
+        backup e (Premium) alertas de inadimplência.</li>
+    <li><code>SCHEDULE_EXACT_ALARM</code>: para agendar essas notificações.</li>
+    <li><code>BILLING</code>: para compra Premium.</li>
+  </ul>
+
+  <div class="destaque">
+    <strong>📓 Uso de contatos:</strong> Quando você concede a permissão e
+    importa um contato, o app lê <strong>apenas o nome e o número de telefone</strong>
+    do contato escolhido para preencher o formulário de cadastro de cliente.
+    Esses dados ficam no seu aparelho, não saem dele.
+  </div>
+
+  <h2>4. Cobrança via WhatsApp</h2>
+  <p>
+    O app gera <strong>links pré-formatados</strong> para o WhatsApp (formato
+    <code>wa.me</code>) com uma mensagem cordial de cobrança ou comprovante
+    de pagamento. <strong>O app não envia mensagens automaticamente</strong> —
+    apenas abre o WhatsApp do seu aparelho com a mensagem pronta, e você
+    decide se vai enviar. Nada é enviado sem sua ação.
+  </p>
+
+  <h2>5. Backup automático local</h2>
+  <p>
+    Diariamente, no primeiro boot do app, é gerado um snapshot dos seus dados
+    em formato JSON na pasta <code>Documents/CadernoDoMEI/backups/</code> do
+    seu aparelho. Os últimos 30 snapshots são mantidos. <strong>Esses arquivos
+    ficam no seu celular</strong> — você decide se os exporta para outro lugar
+    (Google Drive, e-mail, etc) usando a função nativa de compartilhamento.
+  </p>
+
+  <h2>6. Direitos do titular (LGPD)</h2>
+  <p>
+    Não coletamos dados pessoais a nossos servidores. Para apagar todos os
+    dados, desinstale o app, use "Limpar dados" nas configurações do Android,
+    ou apague os snapshots na pasta indicada acima.
+  </p>
+
+  <h2>7. Crianças</h2>
+  <p>
+    Não dirigido a menores de 13 anos.
+  </p>
+
+  <h2>8. Mudanças nesta política</h2>
+  <p>
+    Esta política pode ser atualizada. A data no topo indica a versão atual.
+  </p>
+
+  <h2>9. Contato</h2>
+  <ul>
+    <li>E-mail: <a href="mailto:miltonnunes2012@gmail.com">miltonnunes2012@gmail.com</a></li>
+    <li>WhatsApp: +55 31 98477-2426</li>
+  </ul>
+
+  <footer>
+    Miber Sistemas — Milton Bertoni · Brasil<br>
+    Última atualização: 20 de maio de 2026
+  </footer>
+</body>
+</html>
