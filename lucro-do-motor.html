@@ -9,6 +9,7 @@
          max-width: 720px; margin: 40px auto; padding: 0 20px; color: #222; line-height: 1.6; }
   h1 { font-size: 26px; margin-bottom: 4px; }
   h2 { font-size: 18px; margin-top: 32px; color: #F97316; }
+  h3 { font-size: 15px; margin-top: 20px; }
   p.sub { color: #666; margin-top: 0; }
   ul { padding-left: 20px; }
   li { margin-bottom: 6px; }
@@ -16,12 +17,25 @@
   footer { color: #888; font-size: 13px; margin-top: 40px;
            border-top: 1px solid #eee; padding-top: 16px; }
   .back { font-size: 13px; color: #666; }
+  .destaque {
+    background: #FFF8E1;
+    border-left: 4px solid #F97316;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+  }
+  code {
+    background: #f4f4f4;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.92em;
+  }
 </style>
 </head>
 <body>
   <p class="back"><a href="index.html">← Voltar</a></p>
   <h1>Política de Privacidade — Lucro do Motor</h1>
-  <p class="sub">Vigente a partir de 20 de maio de 2026</p>
+  <p class="sub">Vigente a partir de 21 de maio de 2026</p>
 
   <h2>1. Quem somos</h2>
   <p>
@@ -30,75 +44,195 @@
     na Google Play Store, com opção de assinatura Premium.
   </p>
 
-  <h2>2. Que dados o app coleta</h2>
+  <h2>2. Princípio geral: tudo no seu aparelho</h2>
+  <div class="destaque">
+    O Lucro do Motor <strong>não tem servidor próprio</strong>. Corridas,
+    abastecimentos, despesas, manutenções, turnos, identidade do motorista
+    (nome e foto), fotos de comprovante e dados captados via leitor de
+    notificações ficam armazenados apenas no seu aparelho (Hive +
+    SharedPreferences + sistema de arquivos local do app). Nenhum desses
+    dados é enviado a nós.
+  </div>
+
+  <h2>3. Dados pessoais armazenados localmente</h2>
   <p>
-    O Lucro do Motor <strong>funciona 100% offline</strong>. Corridas,
-    abastecimentos, despesas do veículo, manutenções e turnos ficam armazenados
-    apenas no seu aparelho (Hive + SharedPreferences). Nenhum dado é enviado
-    a nossos servidores.
-  </p>
-  <p>
-    Dados coletados por terceiros via SDKs:
+    Você pode (opcionalmente) cadastrar:
   </p>
   <ul>
+    <li><strong>Nome do motorista</strong> e <strong>foto</strong> (do app principal de corrida usado) — usados pra personalizar o app e aparecer no resumo compartilhável que você gera.</li>
+    <li><strong>Veículo</strong>: modelo, placa, ano, combustível ou tipo de energia (FÓSSIL/ELÉTRICO/HÍBRIDO).</li>
+    <li><strong>Dados financeiros</strong>: corridas (valor, distância, app de origem, duração), abastecimentos/recargas, despesas, manutenções.</li>
+    <li><strong>Fotos de comprovante</strong>: cópias de notas fiscais ou cupons que você anexa às despesas.</li>
+  </ul>
+  <p>
+    Esses dados ficam exclusivamente no seu aparelho. Você pode exportá-los
+    pra arquivo JSON ("Exportar backup") ou apagá-los desinstalando o app
+    ou usando "Limpar dados" nas configurações do Android.
+  </p>
+
+  <h2>4. Permissões do Android e como usamos</h2>
+
+  <h3>4.1 Internet</h3>
+  <p>
+    Pra AdMob (anúncios na versão grátis), validação da compra Premium via
+    Google Play Billing, e abrir links externos (Play Store, sites oficiais).
+  </p>
+
+  <h3>4.2 Notificações (POST_NOTIFICATIONS)</h3>
+  <p>
+    Pra enviar lembretes de manutenção do veículo e vencimento do IPVA
+    (calculado a partir do último dígito da placa).
+  </p>
+
+  <h3>4.3 Alarmes exatos (SCHEDULE_EXACT_ALARM)</h3>
+  <p>
+    Pra agendar as notificações acima na data correta.
+  </p>
+
+  <h3>4.4 Faturamento (BILLING)</h3>
+  <p>
+    Pra processar a compra Premium via Google Play Store.
+  </p>
+
+  <h3>4.5 Câmera e galeria</h3>
+  <p>
+    Pra você adicionar uma <strong>foto de motorista</strong> (perfil)
+    e <strong>fotos de comprovante</strong> nas despesas. As imagens são
+    copiadas pra pasta interna do app e nunca enviadas pra nenhum
+    servidor.
+  </p>
+
+  <h3>4.6 Microfone (RECORD_AUDIO)</h3>
+  <p>
+    Usado <strong>apenas</strong> quando você toca no botão de microfone
+    pra lançar uma corrida por voz. Quando ativo, o áudio é processado
+    pelo serviço de reconhecimento de fala do próprio Android (Google
+    Speech Services), que pode enviar trechos curtos do áudio aos
+    servidores do Google para conversão em texto, conforme
+    <a href="https://policies.google.com/privacy" target="_blank">a política do Google</a>.
+  </p>
+  <p>
+    O <strong>texto resultante</strong> volta pro app, que extrai valor,
+    distância e tempo da frase e cria a corrida — tudo localmente. O
+    microfone <strong>NÃO</strong> fica gravando em background; só é
+    acionado quando você abre a tela "Lançar por voz" e tocou no botão.
+  </p>
+
+  <h3>4.7 Acesso a notificações (BIND_NOTIFICATION_LISTENER_SERVICE) — Premium</h3>
+  <div class="destaque">
+    <p><strong>O que faz:</strong> permite que o Lucro do Motor leia as
+    notificações que aparecem na sua barra de status, apenas das listas
+    abaixo, pra criar a corrida automaticamente sem você digitar.</p>
+    <p><strong>Apps lidos (lista fechada e hardcoded no app):</strong></p>
+    <ul>
+      <li><code>com.ubercab.driver</code> · <code>com.ubercab.UberDriver</code> (Uber)</li>
+      <li><code>com.taxis99.driver</code> · <code>com.taxis99.partner</code> · <code>br.com.taxis99</code> (99)</li>
+      <li><code>sinet.startup.inDriver</code> · <code>com.indriverapp.lib</code> (inDrive)</li>
+      <li><code>br.com.ifood.partner</code> · <code>com.ifoodmotor</code> · <code>com.ifoodentregador</code> (iFood Entregador)</li>
+      <li><code>com.rappi.partner</code> · <code>com.grubhub.driver</code></li>
+    </ul>
+    <p><strong>O que o app NÃO acessa:</strong></p>
+    <ul>
+      <li>WhatsApp, Telegram, SMS, e-mail ou qualquer outro app de mensagens</li>
+      <li>Conteúdo de fotos, vídeos, áudios ou chamadas</li>
+      <li>Contatos do telefone, agenda, localização</li>
+      <li>Qualquer outra notificação fora da lista acima</li>
+    </ul>
+    <p><strong>Como ativar/desativar:</strong> a permissão precisa ser
+    concedida manualmente em <em>Configurações do Android → Acesso a
+    notificações</em>. Você pode revogá-la a qualquer momento nessa
+    mesma tela.</p>
+    <p><strong>O que é extraído:</strong> da notificação capturada, o app
+    procura por valor em R$ e distância em km via expressões regulares.
+    O conteúdo da notificação <strong>não é enviado a nenhum servidor</strong>
+    — todo o processamento acontece no aparelho.</p>
+  </div>
+
+  <h3>4.8 Bluetooth (BLUETOOTH)</h3>
+  <p>
+    Declarada pra compatibilidade futura com adaptadores OBD-II de veículo.
+    No momento o app não se conecta a nenhum dispositivo Bluetooth.
+  </p>
+
+  <h2>5. Serviços de terceiros</h2>
+  <ul>
     <li>
-      <strong>Google AdMob</strong> (anúncios na versão gratuita): identificador
-      de publicidade, informações do dispositivo, dados de uso conforme
-      <a href="https://policies.google.com/technologies/ads">a política do Google</a>.
-      Removíveis na versão Premium.
+      <strong>Google AdMob</strong> (anúncios na versão gratuita):
+      identificador de publicidade, informações do dispositivo, dados
+      agregados de uso conforme
+      <a href="https://policies.google.com/technologies/ads" target="_blank">a política do Google</a>.
+      <strong>Removidos na versão Premium.</strong>
     </li>
     <li>
-      <strong>Google Play Billing</strong>: processamento de pagamento pela
-      assinatura Premium, exclusivamente pelo Google Play.
+      <strong>Google Play Billing</strong>: processamento de pagamento
+      pela assinatura Premium, exclusivamente pelo Google Play.
     </li>
     <li>
-      <strong>Analytics local</strong>: contador de eventos guardado <strong>apenas
-      no aparelho</strong>.
+      <strong>Google Speech Services</strong>: reconhecimento de voz quando
+      você usa o lançamento por voz (item 4.6).
+    </li>
+    <li>
+      <strong>Analytics local</strong>: contador de eventos (quantas vezes
+      cada tela foi aberta) guardado <strong>apenas no aparelho</strong>.
+      Não enviamos a nenhum serviço.
     </li>
   </ul>
 
-  <h2>3. Permissões do Android</h2>
+  <h2>6. Cálculo de IPVA pela placa</h2>
+  <p>
+    O app usa o último dígito da placa para estimar o mês de vencimento do
+    IPVA. Essa é uma <strong>aproximação</strong> — cada estado brasileiro
+    tem calendário próprio, que pode divergir. Confirme com o DETRAN do
+    seu estado antes de tomar decisões financeiras.
+  </p>
+
+  <h2>7. Backup e compartilhamento</h2>
+  <p>
+    Você pode exportar manualmente seus dados em JSON ("Exportar backup").
+    O arquivo é gerado localmente e compartilhado <strong>por você</strong>
+    nos apps de sua escolha. Não temos acesso a ele.
+  </p>
+  <p>
+    Imagens de resumo do dia/semana/mês geradas pelo recurso "Compartilhar"
+    são criadas em memória e oferecidas a você via Compartilhamento do
+    Android (Share). Você decide pra onde enviar.
+  </p>
+
+  <h2>8. Direitos do titular (LGPD)</h2>
+  <p>
+    Como não coletamos dados pessoais em servidor próprio, não há banco
+    de dados central pra você solicitar exclusão. Para apagar todos os
+    dados que você cadastrou:
+  </p>
   <ul>
-    <li><code>INTERNET</code>: para AdMob e validação da compra Premium.</li>
-    <li><code>POST_NOTIFICATIONS</code>: para lembretes de manutenção do veículo
-        e vencimento do IPVA (calculado pelo último dígito da placa).</li>
-    <li><code>SCHEDULE_EXACT_ALARM</code>: para agendar notificações na data correta.</li>
-    <li><code>BILLING</code>: para a compra Premium via Google Play.</li>
+    <li>Use "Apagar tudo" nas configurações do app (se disponível), OU</li>
+    <li>Vá em <em>Configurações do Android → Apps → Lucro do Motor → Armazenamento → Limpar dados</em>, OU</li>
+    <li>Desinstale o app.</li>
   </ul>
 
-  <h2>4. Backup e compartilhamento de dados</h2>
+  <h2>9. Sem afiliação com apps de corrida</h2>
   <p>
-    Você pode exportar manualmente seus dados em JSON via "Exportar backup".
-    O arquivo é gerado localmente e compartilhado por você nos apps de sua
-    escolha. Não temos acesso a ele.
+    O Lucro do Motor <strong>não tem afiliação</strong> com Uber, 99,
+    inDrive, iFood, Rappi ou qualquer outra plataforma de corrida ou
+    entrega. Os nomes e marcas mencionadas são propriedade dos seus
+    respectivos donos. O app apenas lê notificações que essas plataformas
+    enviam ao motorista (item 4.7) com permissão explícita do usuário.
   </p>
 
-  <h2>5. Cálculo de IPVA pela placa</h2>
+  <h2>10. Crianças</h2>
   <p>
-    O app usa o último dígito da placa para estimar o mês de vencimento do IPVA.
-    Essa é uma <strong>aproximação</strong> — cada estado brasileiro tem calendário
-    próprio, que pode divergir. Confirme com o DETRAN do seu estado antes de
-    tomar decisões financeiras.
+    O app não é dirigido a menores de 18 anos (motorista profissional).
+    Se identificar uso indevido, entre em contato.
   </p>
 
-  <h2>6. Direitos do titular (LGPD)</h2>
+  <h2>11. Mudanças nesta política</h2>
   <p>
-    Não coletamos dados pessoais. Para excluir todos os dados, desinstale o app
-    ou use "Limpar dados" nas configurações do Android.
+    Esta política pode ser atualizada. A data no topo indica a versão
+    atual. Mudanças significativas serão comunicadas dentro do próprio
+    app.
   </p>
 
-  <h2>7. Crianças</h2>
-  <p>
-    O app não é dirigido a menores de 18 anos (motorista profissional). Se
-    identificar uso indevido, entre em contato.
-  </p>
-
-  <h2>8. Mudanças nesta política</h2>
-  <p>
-    Esta política pode ser atualizada. A data no topo indica a versão atual.
-  </p>
-
-  <h2>9. Contato</h2>
+  <h2>12. Contato</h2>
   <ul>
     <li>E-mail: <a href="mailto:miltonnunes2012@gmail.com">miltonnunes2012@gmail.com</a></li>
     <li>WhatsApp: +55 31 98477-2426</li>
@@ -106,7 +240,7 @@
 
   <footer>
     Miber Sistemas — Milton Bertoni · Brasil<br>
-    Última atualização: 20 de maio de 2026
+    Última atualização: 21 de maio de 2026
   </footer>
 </body>
 </html>
